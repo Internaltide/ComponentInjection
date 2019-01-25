@@ -1,0 +1,25 @@
+{
+    "name": "internaltide/component-injection",
+    "description": "The component injection service",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Darren Ting",
+            "email": "tingchihua@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "Internaltide\\ComponentInjection\\": "src/"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Internaltide\\ComponentInjection\\ComponentInjectionServiceProvider"
+            ],
+            "aliases": {
+                "Component": "Internaltide\\ComponentInjection\\Components\\ComponentFacade"
+            }
+        }
+    },
+}
