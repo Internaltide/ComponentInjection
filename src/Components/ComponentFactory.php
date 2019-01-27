@@ -1,6 +1,6 @@
 <?php
 
-namespace Internatide\ComponentInjection\Components;
+namespace Internaltide\ComponentInjection\Components;
 
 use App;
 use Internatide\ComponentInjection\FactoryContract;
