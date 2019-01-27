@@ -71,7 +71,7 @@
                 if( arguments[4][1] ) afterClose = arguments[4][1];
             }
 
-            $('.modal-title').html(escape(title));
+            $('.modal-title').html(title);
             modalBackground( $('.modal-dialog').data('bg') );
 
             var btnObj;
@@ -114,7 +114,7 @@
                         $('#modal-dialog').modal('show');
                     });
                 } else {
-                    $('#modal-body').html(escape(getUrl));
+                    $('#modal-body').html(getUrl);
                     $('#modal-dialog').modal('show');
                 }
             }
