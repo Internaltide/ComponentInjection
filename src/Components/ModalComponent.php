@@ -2,7 +2,7 @@
 
 namespace Internaltide\ComponentInjection\Components;
 
-class ModalCompoent
+class ModalComponent
 {
     public function __construct()
     {
