@@ -10,7 +10,9 @@
     ],
     "require": {},
     "autoload": {
-        "Internaltide\\ComponentInjection\\": "src/"
+        "psr-4": {
+            "Internaltide\\ComponentInjection\\": "src/"
+        }
     },
     "extra": {
         "laravel": {
