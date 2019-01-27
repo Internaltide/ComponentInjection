@@ -3,9 +3,7 @@
 return [
     'extra' => [
         'namespace' => 'App\Components',
-        'modalbg' => ''
-    ],
-    'view' => [
-        'modalframe' => 'modalframe'
+        'modalbg' => 'white',
+        'modalvendor' => 'bootstrap'
     ]
 ];

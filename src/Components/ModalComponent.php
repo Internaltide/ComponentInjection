@@ -4,6 +4,8 @@ namespace Internaltide\ComponentInjection\Components;
 
 class ModalComponent
 {
+    private $withAPI = true; // 是否夾帶JS Library，預設夾帶
+
     public function __construct()
     {
         // do nothing
@@ -13,8 +15,11 @@ class ModalComponent
      * The method that was not load body content, its used to load modal frame.
      * Body content 將再由元件另外使用 ajax 來載入所需內容
      */
-    public function frame($title, $vendor='bootstrap', $tpl=null)
+    public function frame($title, $withAPI=true, $tpl=null)
     {
+        $this->withAPI = $withAPI;
+
+        $vendor = config('component.extra.modalvendor');
         switch($vendor){
             case 'bootstrap':
                 return $this->bootstrap($title, $tpl);
@@ -30,7 +35,8 @@ class ModalComponent
 
     public function bootstrap($title,$tpl=null)
     {
-        return view('componentInjection::'.config('component.view.modalframe'), [
+        return view('componentInjection::modalframe', [
+            'api' => $this->withAPI,
             'modalLabel' => ( empty($title) ) ? 'Undefined Title':$title,
             'modalBackground' => config('component.extra.modalbg')
         ]);

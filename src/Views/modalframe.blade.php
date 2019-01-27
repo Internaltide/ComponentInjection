@@ -25,96 +25,98 @@
         </div>
     </div>
 </div>
-<script>
-    function modalClose(){
-        $('#modal-dialog').modal("hide");
-    }
-    function modalSubmit(targets){
-        $('#modal-targets').val(targets);
-        $('#modal-form').find('[type="submit"]').trigger('click');
-    }
-    function modalEmpty(){
-        var el = ['input','textarea','select'];
-        el.forEach(function(element) {
-            $('#form-main').find(element).each(function(){
-                $(this).val('');
-            });
-        });
-    }
-    function modalBackground(background){
-        var url = /^http\S+$/;
-        background = background.trim();
-        if( background.length > 0 ){
-            if( url.test(background) ){
-                $('.modal-dialog').css('background', "url('"+background+"')");
-            } else {
-                $('.modal-dialog').css('background', background);
-            }
-        } else {
-            $('.modal-dialog').css('background', 'white');
+@if( $api === true )
+    <script>
+        function modalClose(){
+            $('#modal-dialog').modal("hide");
         }
-    }
-    var defSave = function(){
-        alert('請建立方法modalSave或指定回調來處理Modal Save的動作');
-    }
-    var defClose = function(){
-        // default do nothing after modal closed
-    }
-    var defOk = function(){
-        modalClose();
-    }
-    function modalPopup(type,size,getUrl){
-        if( arguments[3] ){
-            // if assign callback from client, override default method
-            if( arguments[3][0] ) modalConfirm = arguments[3][0];
-            if( arguments[3][1] ) afterClose = arguments[3][1];
+        function modalSubmit(targets){
+            $('#modal-targets').val(targets);
+            $('#modal-form').find('[type="submit"]').trigger('click');
         }
-
-        modalBackground( $('.modal-dialog').data('bg') );
-
-        var btnObj;
-        switch(type){
-            case 'form':
-                $('#modalOk').hide();
-                btnObj = {
-                    "Cancel": modalClose,
-                    "Save": typeof(modalConfirm)==='function' ? modalConfirm:defSave
-                }
-                break;
-            case 'info':
-                $('#modalSave').hide();
-                btnObj = {
-                    "Cancel": modalClose,
-                    "Ok": typeof(modalConfirm)==='function' ? modalConfirm:defOk
-                }
-                break;
-        }
-
-        loadContent(size,getUrl,btnObj);
-    }
-    function loadContent(size,getUrl,btnObj){
-        $('.modal-dialog').addClass(size);
-
-        $('#modalCancel').on('click', btnObj.Cancel);
-        if( btnObj.Save ){
-            $('#modalSave').on('click', btnObj.Save);
-        } else {
-            $('#modalOk').on('click', btnObj.Ok);
-        }
-
-        if( getUrl.length == 0 ){
-            $('#modal-body').html('Content Loading...');
-            $('#modal-dialog').modal('show');
-        } else {
-            var url = /^http\S+$/;
-            if( url.test(getUrl) ){
-                $('#modal-body').load(getUrl,function(){
-                    $('#modal-dialog').modal('show');
+        function modalEmpty(){
+            var el = ['input','textarea','select'];
+            el.forEach(function(element) {
+                $('#form-main').find(element).each(function(){
+                    $(this).val('');
                 });
+            });
+        }
+        function modalBackground(background){
+            var url = /^http\S+$/;
+            background = background.trim();
+            if( background.length > 0 ){
+                if( url.test(background) ){
+                    $('.modal-dialog').css('background', "url('"+background+"')");
+                } else {
+                    $('.modal-dialog').css('background', background);
+                }
             } else {
-                $('#modal-body').html(escape(getUrl));
-                $('#modal-dialog').modal('show');
+                $('.modal-dialog').css('background', 'white');
             }
         }
-    }
-</script>
+        var defSave = function(){
+            alert('請建立方法modalSave或指定回調來處理Modal Save的動作');
+        }
+        var defClose = function(){
+            // default do nothing after modal closed
+        }
+        var defOk = function(){
+            modalClose();
+        }
+        function modalPopup(type,size,getUrl){
+            if( arguments[3] ){
+                // if assign callback from client, override default method
+                if( arguments[3][0] ) modalConfirm = arguments[3][0];
+                if( arguments[3][1] ) afterClose = arguments[3][1];
+            }
+
+            modalBackground( $('.modal-dialog').data('bg') );
+
+            var btnObj;
+            switch(type){
+                case 'form':
+                    $('#modalOk').hide();
+                    btnObj = {
+                        "Cancel": modalClose,
+                        "Save": typeof(modalConfirm)==='function' ? modalConfirm:defSave
+                    }
+                    break;
+                case 'info':
+                    $('#modalSave').hide();
+                    btnObj = {
+                        "Cancel": modalClose,
+                        "Ok": typeof(modalConfirm)==='function' ? modalConfirm:defOk
+                    }
+                    break;
+            }
+
+            loadContent(size,getUrl,btnObj);
+        }
+        function loadContent(size,getUrl,btnObj){
+            $('.modal-dialog').addClass(size);
+
+            $('#modalCancel').on('click', btnObj.Cancel);
+            if( btnObj.Save ){
+                $('#modalSave').on('click', btnObj.Save);
+            } else {
+                $('#modalOk').on('click', btnObj.Ok);
+            }
+
+            if( getUrl.length == 0 ){
+                $('#modal-body').html('Content Loading...');
+                $('#modal-dialog').modal('show');
+            } else {
+                var url = /^http\S+$/;
+                if( url.test(getUrl) ){
+                    $('#modal-body').load(getUrl,function(){
+                        $('#modal-dialog').modal('show');
+                    });
+                } else {
+                    $('#modal-body').html(escape(getUrl));
+                    $('#modal-dialog').modal('show');
+                }
+            }
+        }
+    </script>
+@endif
