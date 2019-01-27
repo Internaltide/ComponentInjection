@@ -26,9 +26,8 @@
     </div>
 </div>
 <script>
-    var modaldialog = $('#modal-dialog');
     function modalClose(){
-        modaldialog.modal("hide");
+        $('#modal-dialog').modal("hide");
     }
     function modalSubmit(targets){
         $('#modal-targets').val(targets);
@@ -41,6 +40,19 @@
                 $(this).val('');
             });
         });
+    }
+    function modalBackground(background){
+        var url = /^http\S+$/;
+        background = background.trim();
+        if( background.length > 0 ){
+            if( url.test(background) ){
+                $('.modal-dialog').css('background', "url('"+background+"')");
+            } else {
+                $('.modal-dialog').css('background', background);
+            }
+        } else {
+            $('.modal-dialog').css('background', 'white');
+        }
     }
     var defSave = function(){
         alert('請建立方法modalSave或指定回調來處理Modal Save的動作');
@@ -57,6 +69,8 @@
             if( arguments[3][0] ) modalConfirm = arguments[3][0];
             if( arguments[3][1] ) afterClose = arguments[3][1];
         }
+
+        modalBackground( $('.modal-dialog').data('bg') );
 
         var btnObj;
         switch(type){
@@ -89,11 +103,18 @@
         }
 
         if( getUrl.length == 0 ){
-            modaldialog.modal('show');
+            $('#modal-body').html('Content Loading...');
+            $('#modal-dialog').modal('show');
         } else {
-            $('#modal-body').load(getUrl,function(){
-                modaldialog.modal('show');
-            });
+            var url = /^http\S+$/;
+            if( url.test(getUrl) ){
+                $('#modal-body').load(getUrl,function(){
+                    $('#modal-dialog').modal('show');
+                });
+            } else {
+                $('#modal-body').html(escape(getUrl));
+                $('#modal-dialog').modal('show');
+            }
         }
     }
 </script>
