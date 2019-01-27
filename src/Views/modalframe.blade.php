@@ -64,13 +64,14 @@
         var defOk = function(){
             modalClose();
         }
-        function modalPopup(type,size,getUrl){
-            if( arguments[3] ){
+        function modalPopup(title,type,size,getUrl){
+            if( arguments[4] ){
                 // if assign callback from client, override default method
-                if( arguments[3][0] ) modalConfirm = arguments[3][0];
-                if( arguments[3][1] ) afterClose = arguments[3][1];
+                if( arguments[4][0] ) modalConfirm = arguments[4][0];
+                if( arguments[4][1] ) afterClose = arguments[4][1];
             }
 
+            $('.modal-title').html(escape(title));
             modalBackground( $('.modal-dialog').data('bg') );
 
             var btnObj;

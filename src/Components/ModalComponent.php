@@ -15,7 +15,7 @@ class ModalComponent
      * The method that was not load body content, its used to load modal frame.
      * Body content 將再由元件另外使用 ajax 來載入所需內容
      */
-    public function frame($title, $withAPI=true, $tpl=null)
+    public function frame($withAPI=true, $title='Undefined Title', $tpl=null)
     {
         $this->withAPI = $withAPI;
 
