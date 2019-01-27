@@ -6,7 +6,7 @@ use App;
 use Internaltide\ComponentInjection\FactoryContract;
 use Internaltide\ComponentInjection\FactoryException;
 
-class CompoentFactory implements FactoryContract
+class ComponentFactory implements FactoryContract
 {
     const COMPONENT_PREFIX = __NAMESPACE__;
     const COMPONENT_SUFFIX = 'Component';
