@@ -88,8 +88,12 @@
             $('#modalOk').on('click', btnObj.Ok);
         }
 
-        $('#modal-body').load(getUrl,function(){
+        if( getUrl.length == 0 ){
             modaldialog.modal('show');
-        });
+        } else {
+            $('#modal-body').load(getUrl,function(){
+                modaldialog.modal('show');
+            });
+        }
     }
 </script>
