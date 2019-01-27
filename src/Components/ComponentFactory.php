@@ -3,8 +3,8 @@
 namespace Internaltide\ComponentInjection\Components;
 
 use App;
-use Internatide\ComponentInjection\FactoryContract;
-use Internatide\ComponentInjection\FactoryException;
+use Internaltide\ComponentInjection\FactoryContract;
+use Internaltide\ComponentInjection\FactoryException;
 
 class CompoentFactory implements FactoryContract
 {
