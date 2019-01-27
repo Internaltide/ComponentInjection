@@ -6,6 +6,6 @@ return [
         'modalbg' => ''
     ],
     'view' => [
-        'modalfram' => 'modalframe'
+        'modalframe' => 'modalframe'
     ]
 ];
