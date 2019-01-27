@@ -1,6 +1,6 @@
 <?php
 
-namespace Internaltide\ComponentInjection\;
+namespace Internaltide\ComponentInjection;
 
 use Illuminate\Support\ServiceProvider;
 use Internaltide\ComponentInjection\Components\ComponentFactory;
