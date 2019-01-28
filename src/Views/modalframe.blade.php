@@ -1,26 +1,28 @@
 <div class="row">
     <div id="modal-dialog" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" data-bg="{{ $modalBackground }}">
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">×</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">{{ $modalLabel }}</h4>
-            </div>
-
-            <!-- Modal Content -->
-            <div id="modal-body" class="modal-body">
-                <div class="container-fluid">
-                    <!-- Load By Ajax -->
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">{{ $modalLabel }}</h4>
                 </div>
-            </div>
 
-            <!-- Modal Footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="modalSave">Save</button>
-                <button type="button" class="btn btn-primary" id="modalOk">Ok</button>
-                <button type="button" class="btn btn-primary" id="modalCancel">Cancel</button>
+                <!-- Modal Content -->
+                <div id="modal-body" class="modal-body">
+                    <div class="container-fluid">
+                        <!-- Load By Ajax -->
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="modalSave">Save</button>
+                    <button type="button" class="btn btn-primary" id="modalOk">Ok</button>
+                    <button type="button" class="btn btn-primary" id="modalCancel">Cancel</button>
+                </div>
             </div>
         </div>
     </div>
