@@ -7,7 +7,7 @@ use Internaltide\ComponentInjection\Components\ComponentFactory;
 
 class ComponentInjectionServiceProvider extends ServiceProvider
 {
-    protected $defer = true;
+    protected $defer = false;
 
     /**
      * Bootstrap services.
@@ -51,6 +51,11 @@ class ComponentInjectionServiceProvider extends ServiceProvider
         // ...
     }
 
+    /**
+     * Return binding name for defered resolve action
+     *
+     * @return array
+     */
     public function provides()
     {
         return [
