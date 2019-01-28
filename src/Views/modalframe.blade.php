@@ -67,11 +67,15 @@
         var defOk = function(){
             modalClose();
         }
+        var defComplete = function(){
+            // default do nothing after modal closed
+        }
         function modalPopup(title,type,size,getUrl){
             if( arguments[4] ){
                 // if assign callback from client, override default method
-                if( arguments[4][0] ) modalConfirm = arguments[4][0];
-                if( arguments[4][1] ) afterClose = arguments[4][1];
+                if( arguments[4][0] ) modalComplete = arguments[4][0];
+                if( arguments[4][1] ) modalConfirm = arguments[4][1];
+                if( arguments[4][2] ) afterClose = arguments[4][2];
             }
 
             $('.modal-title').html(title);
@@ -94,6 +98,8 @@
                     }
                     break;
             }
+            btnObj.virtualComplete = (typeof(modalComplete)==='function') ? modalComplete:defComplete;
+            btnObj.virtualAfterClose = (typeof(afterClose)==='function') ? afterClose:defClose;
 
             loadContent(size,getUrl,btnObj);
         }
@@ -115,12 +121,14 @@
                 if( url.test(getUrl) ){
                     $('#modal-body').load(getUrl,function(){
                         $('#modal-dialog').modal('show');
-                    });
+                    }).bind("ajaxComplete", btnObj.virtualComplete);
                 } else {
                     $('#modal-body').html(getUrl);
                     $('#modal-dialog').modal('show');
                 }
             }
+
+            $('#modal-dialog').on('hidden.bs.modal', btnObj.virtualAfterClose);
         }
     </script>
 @endif
