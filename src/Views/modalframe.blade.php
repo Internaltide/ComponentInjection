@@ -49,13 +49,14 @@
             background = background.trim();
             if( background.length > 0 ){
                 if( url.test(background) ){
-                    $('.modal-dialog').css('background', "url('"+background+"')");
+                    $('.modal-content').css('background', "url('"+background+"')");
                 } else {
-                    $('.modal-dialog').css('background', background);
+                    $('.modal-content').css('background', background);
                 }
             } else {
-                $('.modal-dialog').css('background', 'white');
+                $('.modal-content').css('background', 'white');
             }
+            $('.modal-content').css('background-size', 'cover');
         }
         var defSave = function(){
             alert('請建立方法modalSave或指定回調來處理Modal Save的動作');
