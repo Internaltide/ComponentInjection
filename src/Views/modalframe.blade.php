@@ -11,7 +11,7 @@
                 </div>
 
                 <!-- Modal Content -->
-                <div id="modal-body" class="modal-body">
+                <div id="modal-body">
                     <div class="container-fluid">
                         <!-- Load By Ajax -->
                     </div>
