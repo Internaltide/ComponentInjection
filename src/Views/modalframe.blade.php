@@ -104,7 +104,7 @@
             loadContent(size,getUrl,btnObj);
         }
         function loadContent(size,getUrl,btnObj){
-            $('.modal-dialog').addClass(size);
+            $('.modal-dialog').removeClass().addClass('modal-dialog '+size);
 
             $('#modalCancel').on('click', btnObj.Cancel);
             if( btnObj.Save ){
