@@ -2,8 +2,12 @@
 
 return [
     'extra' => [
-        'namespace' => 'App\Components',
-        'modalbg' => 'white',
-        'modalvendor' => 'bootstrap'
+        'namespace' => 'App\Components'
+    ],
+    'modal' => [
+        'background' => 'white',
+        'vendor' => 'bootstrap',
+        'headercolor' => '',
+        'contentcolor' => ''
     ]
 ];

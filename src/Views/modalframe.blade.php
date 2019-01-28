@@ -3,7 +3,7 @@
         <div class="modal-dialog" data-bg="{{ $modalBackground }}">
             <div class="modal-content">
                 <!-- Modal Header -->
-                <div class="modal-header">
+                <div class="modal-header {{ $headerColor }}">
                     <button type="button" class="close" data-dismiss="modal">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -11,7 +11,7 @@
                 </div>
 
                 <!-- Modal Content -->
-                <div id="modal-body">
+                <div id="modal-body" class="{{ $contentColor }}">
                     <div class="container-fluid">
                         <!-- Load By Ajax -->
                     </div>

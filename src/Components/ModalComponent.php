@@ -19,7 +19,7 @@ class ModalComponent
     {
         $this->withAPI = $withAPI;
 
-        $vendor = config('component.extra.modalvendor');
+        $vendor = config('component.modal.vendor');
         switch($vendor){
             case 'bootstrap':
                 return $this->bootstrap($title, $tpl);
@@ -38,7 +38,9 @@ class ModalComponent
         return view('componentInjection::modalframe', [
             'api' => $this->withAPI,
             'modalLabel' => ( empty($title) ) ? 'Undefined Title':$title,
-            'modalBackground' => config('component.extra.modalbg')
+            'modalBackground' => config('component.modal.background'),
+            'headerColor' => config('component.modal.headercolor'),
+            'contentColor' => config('component.modal.contentcolor')
         ]);
     }
 
