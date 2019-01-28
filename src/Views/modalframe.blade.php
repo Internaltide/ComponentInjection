@@ -121,7 +121,8 @@
                 if( url.test(getUrl) ){
                     $('#modal-body').load(getUrl,function(){
                         $('#modal-dialog').modal('show');
-                    }).bind("ajaxComplete", btnObj.virtualComplete);
+                        btnObj.virtualComplete();
+                    });
                 } else {
                     $('#modal-body').html(getUrl);
                     $('#modal-dialog').modal('show');
