@@ -3,19 +3,7 @@
       <input type="hidden" id="modal-targets" name="target_id">
       <tbody>
         @section('modalForm')
-          <tr>
-              <td colspan="2">
-                <label for="mailSubject"><span class="star">*</span>Subject</label>
-                <input type="text" id="mailSubject" name="subject" required>
-              </td>
-          </tr>
-          <tr>
-              <td colspan="2">
-                <label for="mailbody"><span class="star">*</span>Mail</label>
-                <textarea id="mailbody" name="content" rows="10" required></textarea>
-              </td>
-          </tr>
-          <button type="submit" class=""></button>
+          <button type="submit" style="display:none;"></button>
         @show
       </tbody>
     </table>

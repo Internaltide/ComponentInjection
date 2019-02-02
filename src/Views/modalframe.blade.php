@@ -37,6 +37,9 @@
             $('#modal-targets').val(targets);
             $('#modal-form').find('[type="submit"]').trigger('click');
         }
+        function modalBind(selector, event, callback){
+            $(selector).off().on(event, callback);
+        }
         function modalEmpty(){
             var strForShow = ( typeof(arguments[0]) === 'undefined' ) ? 'Content Loading...':arguments[0];
             $('#modal-body').html(strForShow);
@@ -79,9 +82,9 @@
             var differentModal = (ramy8xyn6K5mMZ5.length > 0 && ramy8xyn6K5mMZ5 !== title) ;
             if( arguments[4] ){
                 // if assign callback from client, override default method
-                if( arguments[4][0] ) modalComplete = arguments[4][0];
-                if( arguments[4][1] ) modalConfirm = arguments[4][1];
-                if( arguments[4][2] ) afterClose = arguments[4][2];
+                if( arguments[4][0] ) var modalComplete = arguments[4][0];
+                if( arguments[4][1] ) var modalConfirm = arguments[4][1];
+                if( arguments[4][2] ) var afterClose = arguments[4][2];
             }
 
             if(differentModal) modalEmpty();
@@ -114,11 +117,11 @@
         function loadContent(size,getUrl,btnObj){
             $('.modal-dialog').removeClass().addClass('modal-dialog '+size);
 
-            $('#modalCancel').on('click', btnObj.Cancel);
+            modalBind('#modalCancel', 'click', btnObj.Cancel);
             if( btnObj.Save ){
-                $('#modalSave').on('click', btnObj.Save);
+                modalBind('#modalSave', 'click', btnObj.Save);
             } else {
-                $('#modalOk').on('click', btnObj.Ok);
+                modalBind('#modalOk', 'click', btnObj.Save);
             }
 
             if( getUrl.length == 0 ){
