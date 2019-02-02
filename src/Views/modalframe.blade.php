@@ -11,8 +11,8 @@
                 </div>
 
                 <!-- Modal Content -->
-                <div id="modal-body" class="{{ $contentColor }}">
-                    <div class="container-fluid">
+                <div class="{{ $contentColor }}">
+                    <div id="modal-body" class="container-fluid">
                         <!-- Load By Ajax -->
                     </div>
                 </div>
@@ -29,6 +29,7 @@
 </div>
 @if( $api === true )
     <script>
+        var ramy8xyn6K5mMZ5='';
         function modalClose(){
             $('#modal-dialog').modal("hide");
         }
@@ -37,6 +38,10 @@
             $('#modal-form').find('[type="submit"]').trigger('click');
         }
         function modalEmpty(){
+            var strForShow = ( typeof(arguments[0]) === 'undefined' ) ? 'Content Loading...':arguments[0];
+            $('#modal-body').html(strForShow);
+        }
+        function modalClear(){
             var el = ['input','textarea','select'];
             el.forEach(function(element) {
                 $('#form-main').find(element).each(function(){
@@ -71,6 +76,7 @@
             // default do nothing after modal closed
         }
         function modalPopup(title,type,size,getUrl){
+            var differentModal = (ramy8xyn6K5mMZ5.length > 0 && ramy8xyn6K5mMZ5 !== title) ;
             if( arguments[4] ){
                 // if assign callback from client, override default method
                 if( arguments[4][0] ) modalComplete = arguments[4][0];
@@ -78,8 +84,8 @@
                 if( arguments[4][2] ) afterClose = arguments[4][2];
             }
 
-            $('.modal-title').html(title);
-            modalBackground( $('.modal-dialog').data('bg') );
+            if(differentModal) modalEmpty();
+            ramy8xyn6K5mMZ5 = title;
 
             var btnObj;
             switch(type){
@@ -101,6 +107,8 @@
             btnObj.virtualComplete = (typeof(modalComplete)==='function') ? modalComplete:defComplete;
             btnObj.virtualAfterClose = (typeof(afterClose)==='function') ? afterClose:defClose;
 
+            $('.modal-title').html(title);
+            modalBackground( $('.modal-dialog').data('bg') );
             loadContent(size,getUrl,btnObj);
         }
         function loadContent(size,getUrl,btnObj){
