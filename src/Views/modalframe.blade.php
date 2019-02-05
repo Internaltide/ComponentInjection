@@ -52,6 +52,22 @@
                 });
             });
         }
+        function modalBtnToggle(btntype, action){
+            var btn;
+            switch(btntype){
+                case 'save':
+                    btn = $('#modalSave');
+                    break;
+                case 'ok':
+                    btn = $('#modalOk');
+                    break;
+                case 'cancel':
+                    btn = $('#modalCancel');
+                    break;
+            }
+
+            (action==='hide') ? btn.hide():btn.show();
+        }
         function modalBackground(background){
             var url = /^http\S+$/;
             background = background.trim();
