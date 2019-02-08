@@ -33,8 +33,8 @@
         function modalClose(){
             $('#modal-dialog').modal("hide");
         }
-        function modalSubmit(targets){
-            $('#modal-targets').val(targets);
+        function modalSubmit(){
+            if( arguments[0] ) $('#modal-targets').val(arguments[0]);
             $('#modal-form').find('[type="submit"]').trigger('click');
         }
         function modalBind(selector, event, callback){
@@ -83,7 +83,8 @@
             $('.modal-content').css('background-size', 'cover');
         }
         var defSave = function(){
-            alert('請建立方法modalSave或指定回調來處理Modal Save的動作');
+            //alert('請建立方法modalSave或指定回調來處理Modal Save的動作');
+            modalSubmit();
         }
         var defClose = function(){
             // default do nothing after modal closed
